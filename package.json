@@ -1,0 +1,29 @@
+{
+  "name": "event",
+  "version": "1.0.0",
+  "description": "Making your Events easier",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdcblue/event.electron.git"
+  },
+  "keywords": [
+    "mdcblue",
+    "event",
+    "event-app",
+    "event-mdcblue"
+  ],
+  "author": "Carlos Abraham",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mdcblue/event.electron/issues"
+  },
+  "homepage": "https://github.com/mdcblue/event.electron#readme",
+  "dependencies": {
+    "electron": "^1.8.2"
+  }
+}
