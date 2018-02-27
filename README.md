@@ -3,7 +3,7 @@
 
 # Contributors
 
-[![Carlos Abraham](https://avatars3.githubusercontent.com/u/21347264?s=100&v=43&s)](https://github.com/19cah) | 
+[![Carlos Abraham](https://avatars3.githubusercontent.com/u/21347264?s=50&v=43&s)](https://github.com/19cah) | 
 --- |
 [Carlos Abraham](https://github.com/19cah) |
 
