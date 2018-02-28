@@ -10,6 +10,7 @@ const {app, BrowserWindow, Menu, ipcMain} = electron;
 
 let mainWindow;
 let addWindow;
+let loginWindow;
 
 // Listen for app to be ready
 app.on('ready', function(){
@@ -52,10 +53,34 @@ function createAddWindow(){
   });
 }
 
+//Create login form
+function createLogin(){
+  loginWindow = new BrowserWindow({
+    width: 500,
+    height:700,
+    title:'Login',
+  });
+  loginWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'login.html'),
+    protocol: 'file:',
+    slashes:true
+  }));
+
+  // Handle garbage collection
+  loginWindow.on('close', function(){
+    loginWindow = null;
+  });
+
+  const {ipcMain} = require('electron')
+  ipcMain.on('close-me', (evt, arg) => {
+  loginWindow.close();
+  console.log('Login form closed');
+});
+}
 
 //Catch item:add
 ipcMain.on('item:add', function(e, item){
-  console.log(item);
+  // console.log(item);
   mainWindow.webContents.send('item:add', item);
   addWindow.close();
 });
@@ -75,19 +100,25 @@ const mainMenuTemplate =  [
       },
       {
         label:'Clear Items'
-        // ,
-        // click(){
-        //   mainWindow.webContents.send('item:clear');
-        // }
+        ,
+        click(){
+          mainWindow.webContents.send('item:clear');
+        }
       },
       {
         label: 'Quit',
         accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
         click(){
           app.quit();
-        }
+        },
       }
     ]
+  },
+  {
+    label: 'Login',
+    click(){
+      createLogin();
+    }
   }
 ];
 

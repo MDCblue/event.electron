@@ -67,7 +67,7 @@ span.psw {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    /*overflow: auto;*/ /* Enable scroll if needed */
+    overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
@@ -126,16 +126,16 @@ span.psw {
 </style>
 </head>
 <body>
-
+<!-- 
 <h2>Modal Login Form</h2>
 
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
-<div id="id01" class="modal">
+<div id="id01" class="modal"> -->
   
   <form class="modal-content animate" action="https://www.w3schools.com/howto/action_page.php">
     <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <span id="closeApp" class="close" title="Close Modal">&times;</span>
       <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
     </div>
 
@@ -160,15 +160,21 @@ span.psw {
 </div>
 
 <script>
-// Get the modal
-var modal = document.getElementById('id01');
+// // Get the modal
+// var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//     if (event.target == modal) {
+//         modal.style.display = "none";
+//     }
+// }
+const {ipcRenderer} = require('electron');
+const closeApp = document.getElementById('closeApp');
+closeApp.addEventListener('click', () => {
+    ipcRenderer.send('close-me')
+});
+
 </script>
 
 </body>

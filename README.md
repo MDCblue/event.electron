@@ -1,5 +1,6 @@
 # #Event
 
+*Making your events easier*
 
 # Contributors
 
