@@ -1,9 +1,10 @@
 const electron = require('electron');
 const path = require('path');
 const url = require('url');
+console.log(process.env.SECRET_MESSAGE);
 
 // SET ENV
-process.env.NODE_ENV = 'production'; //development
+process.env.NODE_ENV = 'development'; //development or production
 
 const {app, BrowserWindow, Menu, ipcMain} = electron;
 
@@ -37,7 +38,8 @@ function createAddWindow(){
   addWindow = new BrowserWindow({
     width: 300,
     height:200,
-    title:'Add Shopping List Item'
+    title:'Add Shopping List Item',
+    parent: mainWindow
   });
   addWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'addWindow.html'),
@@ -60,7 +62,6 @@ ipcMain.on('item:add', function(e, item){
 
 // Create menu template
 const mainMenuTemplate =  [
-  {},
   // Each object is a dropdown
   {
     label: 'File',
